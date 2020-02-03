@@ -18,9 +18,8 @@ const cleanOldProperties = async (createdAtDaysAgo: number): Promise<null> => {
       await commune.save();
     }));
 
-    const deleteProperties = await propertyModel.deleteMany({ _id: { $in: propertiesToDeleteIds } });
+    await propertyModel.deleteMany({ _id: { $in: propertiesToDeleteIds } });
 
-    console.log({deleteProperties});
     return null;
   } catch (error) {
     throw new Error(error.message);
